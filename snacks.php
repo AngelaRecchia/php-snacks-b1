@@ -75,18 +75,21 @@ $teams = [
         <button type="submit">Accedi</button>
     </form>
     
-    <?php
+    <div>
+        <?php
+
+            if(isset($_GET['name']) && isset($_GET['email']) && isset($_GET['age'])) {
+            
+                if(strlen($_GET['name']) <= 3 || !strpos($_GET['email'], '.') || !strpos($_GET['email'], '@') || !is_numeric($_GET['age'])) $res = "Accesso Negato";
+                else $res = "Accesso Riuscito";
+            }
+        
+            echo $res;
+
+        ?>
+
+    </div>
     
-    if(isset($_GET['name']) && isset($_GET['email']) && isset($_GET['age'])) {
-
-        if(strlen($_GET['name']) <= 3 || !strpos($_GET['email'], '.') || !strpos($_GET['email'], '@') || !is_numeric($_GET['age'])) $res = "Accesso Negato";
-        else $res = "Accesso riuscito";
-    }
-    ?>
-
-    <div><?php echo $res ?></div>
-    
-
 </body>
 </html>
 
